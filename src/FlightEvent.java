@@ -5,22 +5,21 @@ public class FlightEvent {
     /// Class that represents a Flight Event and its respective info.
     ///
 
-    private Timestamp eventTime; //YEAR, MONTH, DAY_OF_MONTH, CRS_DEP_TIME
-    private String crsDepTime;
-    private Integer year;
-    private Integer month;
-    private Integer day;
+    private Timestamp eventTime; //YEAR, MONTH, DAY_OF_MONTH, CRS_DEP_TIME (flight date + CRS_DEP_TIME, timezone UTC)
 
+    // identifier
+    private String carrierFlightNum;
+
+    private String crsDepTime;
     private String carrier;
     private Integer originAirportID;
     private Integer destAirportID;
 
-    private Boolean isDiverted;
     private Boolean isCancelled;
+    private Boolean isDiverted;
     private Double depDelay;
 
-    // identifier
-    private String carrierFlightNum;
+
 
 
     // Constructor
@@ -55,30 +54,6 @@ public class FlightEvent {
 
     public void setCrsDepTime(String crsDepTime) {
         this.crsDepTime = crsDepTime;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getMonth() {
-        return month;
-    }
-
-    public void setMonth(Integer month) {
-        this.month = month;
-    }
-
-    public Integer getDay() {
-        return day;
-    }
-
-    public void setDay(Integer day) {
-        this.day = day;
     }
 
     public String getCarrier() {

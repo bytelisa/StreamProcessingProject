@@ -1,0 +1,11 @@
+{
+  "eventTime": "2025-01-01T08:30:00Z",
+  "carrier": "AA",
+  "carrierFlightNum": "34266",
+  "crsDepTime": "0830",
+  "originAirportId": 10397,
+  "destAirportId": 11298,
+  "isCancelled": false,
+  "isDiverted": false,
+  "depDelay": 12.0
+}
