@@ -206,10 +206,14 @@ def write_jsonl(flight_events):
 
 
 def main():
+
+    # parse CSV and load flight events
     flight_events = load_events()
 
-    # events.sort(key=lambda event: event["eventTime"])
+    # order flight events
+    flight_events.sort(key=lambda event: event["eventTime"])
 
+    # write on JSONL file
     write_jsonl(flight_events)
 
     print(f"Wrote {len(flight_events)} events to {OUTPUT_FILE}")
