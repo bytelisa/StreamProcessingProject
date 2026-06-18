@@ -2,6 +2,7 @@
 import csv
 import json
 from pathlib import Path
+from datetime import datetime, timezone
 
 """
 Class Responsibility: prepare data for the replayer
@@ -16,16 +17,47 @@ OUTPUT_FILE = PROJECT_ROOT / "data" / "processed" / "flights_sorted.jsonl"
 
 
 
-def compute_event_time(year, month, day, time):
+def compute_event_time(year, month, day, crs_dep_time):
     """
-    Computes the timestamp of the flight event.
-    :param year:
-    :param month:
-    :param day:
-    :param time:
-    :return:
+    Computes the logical event time from flight date and scheduled departure time.
+
+    The returned value is an ISO/RFC3339 string with UTC timezone, e.g.:
+    2025-01-01T08:30:00Z
+
+    UTC is used as a technical convention for representing the logical event time.
     """
-    print(month)
+
+    if year is None or month is None or day is None or crs_dep_time is None:
+        raise ValueError(
+            f"Cannot compute eventTime with year={year}, month={month}, "
+            f"day={day}, crsDepTime={crs_dep_time}"
+        )
+
+    # crs_dep_time is expected to be normalized as a 4-character HHMM string.
+    if len(crs_dep_time) != 4 or not crs_dep_time.isdigit():
+        raise ValueError(f"Invalid CRS_DEP_TIME format: {crs_dep_time}")
+
+    hour = int(crs_dep_time[:2])
+    minute = int(crs_dep_time[2:])
+
+    if hour < 0 or hour > 23 or minute < 0 or minute > 59:
+        raise ValueError(f"Invalid CRS_DEP_TIME value: {crs_dep_time}")
+
+    event_dt = datetime(
+        year=int(year),
+        month=int(month),
+        day=int(day),
+        hour=hour,
+        minute=minute,
+        second=0,
+        microsecond=0,
+        tzinfo=timezone.utc,
+    )
+
+    # Python would output "+00:00"; replace it with "Z" for cleaner RFC3339/ISO style.
+    return event_dt.isoformat().replace("+00:00", "Z")
+
+
 
 def empty_to_none(value):
     """
