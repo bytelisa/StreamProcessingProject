@@ -93,7 +93,8 @@ def main():
                     if sleep_time > 0:
                         time.sleep(sleep_time)
 
-                producer.send(TOPIC, value=event.encode("utf-8"))
+                # send the JSON line, not the event!
+                producer.send(TOPIC, value=line.encode("utf-8"))
                 print(event)
 
                 previous_event_time = current_event_time
