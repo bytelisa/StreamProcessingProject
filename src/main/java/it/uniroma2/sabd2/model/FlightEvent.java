@@ -1,11 +1,14 @@
+package it.uniroma2.sabd2.model;
+
 import java.sql.Timestamp;
 
 public class FlightEvent {
 
-    /// Class that represents a Flight Event and its respective info.
-    ///
+    /***
+     * Class that represents a Flight Event Object and its respective info.
+    */
 
-    private Timestamp eventTime; //YEAR, MONTH, DAY_OF_MONTH, CRS_DEP_TIME (flight date + CRS_DEP_TIME, timezone UTC)
+    private String eventTime; //YEAR, MONTH, DAY_OF_MONTH, CRS_DEP_TIME (flight date + CRS_DEP_TIME, timezone UTC)
 
     // identifier
     private String carrierFlightNum;
@@ -40,11 +43,11 @@ public class FlightEvent {
 
     // Setters and Getters for private methods
 
-    public Timestamp getEventTime() {
+    public String getEventTime() {
         return eventTime;
     }
 
-    public void setEventTime(Timestamp eventTime) {
+    public void setEventTime(String eventTime) {
         this.eventTime = eventTime;
     }
 

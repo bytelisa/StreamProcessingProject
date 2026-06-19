@@ -32,3 +32,6 @@ bin/
 ### Python venv ###
 .venv-wsl/
 .venv/
+
+### Examples ###
+examples/

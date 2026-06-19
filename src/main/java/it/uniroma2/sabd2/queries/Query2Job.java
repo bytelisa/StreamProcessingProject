@@ -1,4 +1,6 @@
-public class Query2 {
+package it.uniroma2.sabd2.queries;
+
+public class Query2Job {
     /***
      *     Class Responsibility: implement Query #1 using Flink.
      *
