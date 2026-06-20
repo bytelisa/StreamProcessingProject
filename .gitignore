@@ -3,6 +3,10 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .kotlin
+.idea/
+*.iml
+**/.idea/
+
 
 ### Eclipse ###
 .apt_generated
@@ -29,9 +33,28 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-### Python venv ###
+### Python ###
 .venv-wsl/
 .venv/
+__pycache__/
+*.pyc
+
 
 ### Examples ###
 examples/
+kafka/
+
+
+
+# Java/Maven generated files
+target/
+**/target/
+*.class
+
+# Logs
+*.log
+hs_err_pid*.log
+
+# Local data
+data/*.csv
+data/processed/
