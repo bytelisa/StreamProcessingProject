@@ -1,6 +1,7 @@
 package it.uniroma2.sabd2.queries;
 
 import it.uniroma2.sabd2.model.FlightEvent;
+import it.uniroma2.sabd2.model.Query1Result;
 import org.apache.flink.runtime.execution.Environment;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -38,9 +39,11 @@ public class Query1Job {
 
      */
 
-    public static void execute(StreamExecutionEnvironment env, DataStream<FlightEvent> flightEvents){
+    public static DataStream<Query1Result> execute(StreamExecutionEnvironment env, DataStream<FlightEvent> flightEvents){
 
 
+
+        return null;
     }
 
 }
