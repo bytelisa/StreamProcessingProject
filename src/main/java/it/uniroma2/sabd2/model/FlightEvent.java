@@ -1,7 +1,5 @@
 package it.uniroma2.sabd2.model;
 
-import java.sql.Timestamp;
-
 public class FlightEvent {
 
     /***
@@ -15,8 +13,8 @@ public class FlightEvent {
 
     private String crsDepTime;
     private String carrier;
-    private Integer originAirportID;
-    private Integer destAirportID;
+    private Integer originAirportId;
+    private Integer destAirportId;
 
     private Boolean isCancelled;
     private Boolean isDiverted;
@@ -27,8 +25,21 @@ public class FlightEvent {
 
     // Constructor
 
-    public FlightEvent(){
-        new FlightEvent();
+    public FlightEvent(){   }
+
+    @Override
+    public String toString() {
+        return "FlightEvent{" +
+                "eventTime='" + eventTime + '\'' +
+                ", carrier='" + carrier + '\'' +
+                ", carrierFlightNum='" + carrierFlightNum + '\'' +
+                ", crsDepTime='" + crsDepTime + '\'' +
+                ", originAirportId=" + originAirportId +
+                ", destAirportId=" + destAirportId +
+                ", isCancelled=" + isCancelled +
+                ", isDiverted=" + isDiverted +
+                ", depDelay=" + depDelay +
+                '}';
     }
 
     // Helper method
@@ -67,20 +78,20 @@ public class FlightEvent {
         this.carrier = carrier;
     }
 
-    public Integer getOriginAirportID() {
-        return originAirportID;
+    public Integer getOriginAirportId() {
+        return originAirportId;
     }
 
-    public void setOriginAirportID(Integer originAirportID) {
-        this.originAirportID = originAirportID;
+    public void setOriginAirportId(Integer originAirportId) {
+        this.originAirportId = originAirportId;
     }
 
-    public Integer getDestAirportID() {
-        return destAirportID;
+    public Integer getDestAirportId() {
+        return destAirportId;
     }
 
-    public void setDestAirportID(Integer destAirportID) {
-        this.destAirportID = destAirportID;
+    public void setDestAirportId(Integer destAirportId) {
+        this.destAirportId = destAirportId;
     }
 
     public Boolean getDiverted() {
