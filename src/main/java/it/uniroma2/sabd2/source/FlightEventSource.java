@@ -17,9 +17,7 @@ public class FlightEventSource {
 
     private static final Gson gson = new Gson();
 
-    public static void main(String[] args) throws Exception {
-
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+    public static DataStream<FlightEvent> sourceEvents(StreamExecutionEnvironment env) {
 
         KafkaSource<String> source = KafkaSource.<String>builder()
                 .setBootstrapServers("localhost:9092")
@@ -31,6 +29,7 @@ public class FlightEventSource {
 
         DataStream<String> rawStream = env.fromSource(
                 source,
+                // todo check watermarking strategy
                 WatermarkStrategy.noWatermarks(),
                 "Kafka Source"
         );
@@ -40,18 +39,18 @@ public class FlightEventSource {
                 .returns(FlightEvent.class)
                 .assignTimestampsAndWatermarks(
                         WatermarkStrategy
-                                .<FlightEvent>forMonotonousTimestamps()
-                                // If you later introduce out-of-order events, use:
-                                // .<FlightEvent>forBoundedOutOfOrderness(Duration.ofSeconds(5))
+                                // todo check watermarking strategy
+                                 .<FlightEvent>forBoundedOutOfOrderness(Duration.ofSeconds(5))
                                 .withTimestampAssigner(
                                         (event, recordTimestamp) -> parseEventTimeMillis(event.getEventTime())
                                 )
                                 .withIdleness(Duration.ofSeconds(10))
                 );
 
-        flightEvents.print();
+//        flightEvents.print();
 
-        env.execute("Flight Event Source Test");
+
+        return flightEvents;
     }
 
     private static FlightEvent parseFlightEvent(String rawJson) {
@@ -61,4 +60,6 @@ public class FlightEventSource {
     private static long parseEventTimeMillis(String eventTime) {
         return Instant.parse(eventTime).toEpochMilli();
     }
-}
+
+
+    }
