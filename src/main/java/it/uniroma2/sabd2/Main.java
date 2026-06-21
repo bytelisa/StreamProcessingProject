@@ -1,17 +1,38 @@
 package it.uniroma2.sabd2;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import it.uniroma2.sabd2.model.FlightEvent;
+import it.uniroma2.sabd2.model.Query1Result;
+import it.uniroma2.sabd2.queries.Query1Job;
+import it.uniroma2.sabd2.source.FlightEventSource;
+import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        // Event Source (from Kafka)
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+
+        try {
+            DataStream <FlightEvent> flightEvents = FlightEventSource.sourceEvents(env);
+
+            // Query 1
+            DataStream <Query1Result> query1Results = Query1Job.execute(env, flightEvents);
+            query1Results.print();
+
+            // Query 2
+            //DataStream <Query2Result> query2Results = Query2Job.execute(env, FlightEvents);
+
+
+            env.execute("Flight Event Source Test");
+
+        } catch (Exception e) {
+            System.out.println(
+                    "[Error] Received the following exception when trying to execute the pipeline:"
+                    + e.getMessage());
         }
+
     }
 }

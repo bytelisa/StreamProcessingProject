@@ -1,5 +1,10 @@
 package it.uniroma2.sabd2.queries;
 
+import it.uniroma2.sabd2.model.FlightEvent;
+import org.apache.flink.runtime.execution.Environment;
+import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+
 public class Query1Job {
     /***
     Class Responsibility: implement Query #1 using Flink.
@@ -11,7 +16,7 @@ public class Query1Job {
 
      Per ciascuna finestra e per ciascuna compagnia, calcolare:
          • il numero totale di voli osservati;
-         • il numero di voli completati (cio`e non cancellati e non deviati), cancellati e deviati;
+         • il numero di voli completati (cioe' non cancellati e non deviati), cancellati e deviati;
          • il valor medio di DEP DELAY, considerando solo i voli non cancellati;
          • il tasso di cancellazione, definito come percentuale di voli cancellati sul totale dei voli osservati
          nella finestra;
@@ -22,5 +27,20 @@ public class Query1Job {
      window start, window end, airline, num flights, completed, cancelled,
      diverted, dep delay mean, cancellation rate, late departure rate
 
+     - 1 hour Tumbling window;
+     - Status: 6 variables
+        - total_count
+        - completed_count
+        - cancelled_count
+        - diverted_count
+        - dep_delay_sum
+        - late_departure_count: counts the number of non-cancelled flights with a departure delay greater than 15 min
+
      */
+
+    public static void execute(StreamExecutionEnvironment env, DataStream<FlightEvent> flightEvents){
+
+
+    }
+
 }
