@@ -19,7 +19,7 @@ public class Main {
             DataStream <FlightEvent> flightEvents = FlightEventSource.sourceEvents(env);
 
             // Query 1
-            DataStream <Query1Result> query1Results = Query1Job.execute(env, flightEvents);
+            DataStream <Query1Result> query1Results = Query1Job.execute(flightEvents);
             query1Results.print();
 
             // Query 2

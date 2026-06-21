@@ -2,53 +2,102 @@ package it.uniroma2.sabd2.model;
 
 public class Query1Result {
 
-    private int TotalFlights;
+    private String carrier;
+    private String windowStart;
+    private String windowEnd;
 
-    private int CompletedFlights;
+    private long totalFlights;
+    private long completedFlights;
+    private long cancelledFlights;
+    private long divertedFlights;
 
-    private float MeanDepDelay;
+    private double meanDepDelay;
+    private double cancellationRate;
+    private double lateDepartureRate;
 
-    private float CancellationRate;
 
-    private float LateDepartureRate;
-
-    public int getTotalFlights() {
-        return TotalFlights;
+    public String getCarrier() {
+        return carrier;
     }
 
-    public void setTotalFlights(int totalFlights) {
-        TotalFlights = totalFlights;
+    public void setCarrier(String carrier) {
+        this.carrier = carrier;
     }
 
-    public int getCompletedFlights() {
-        return CompletedFlights;
+    public String getWindowStart() {
+        return windowStart;
     }
 
-    public void setCompletedFlights(int completedFlights) {
-        CompletedFlights = completedFlights;
+    public void setWindowStart(String windowStart) {
+        this.windowStart = windowStart;
     }
 
-    public float getMeanDepDelay() {
-        return MeanDepDelay;
+    public String getWindowEnd() {
+        return windowEnd;
     }
 
-    public void setMeanDepDelay(float meanDepDelay) {
-        MeanDepDelay = meanDepDelay;
+    public void setWindowEnd(String windowEnd) {
+        this.windowEnd = windowEnd;
     }
 
-    public float getCancellationRate() {
-        return CancellationRate;
+    public long getTotalFlights() {
+        return totalFlights;
     }
 
-    public void setCancellationRate(float cancellationRate) {
-        CancellationRate = cancellationRate;
+    public void setTotalFlights(long totalFlights) {
+        this.totalFlights = totalFlights;
     }
 
-    public float getLateDepartureRate() {
-        return LateDepartureRate;
+    public long getCompletedFlights() {
+        return completedFlights;
     }
 
-    public void setLateDepartureRate(float lateDepartureRate) {
-        LateDepartureRate = lateDepartureRate;
+    public void setCompletedFlights(long completedFlights) {
+        this.completedFlights = completedFlights;
     }
+
+    public long getCancelledFlights() {
+        return cancelledFlights;
+    }
+
+    public void setCancelledFlights(long cancelledFlights) {
+        this.cancelledFlights = cancelledFlights;
+    }
+
+    public long getDivertedFlights() {
+        return divertedFlights;
+    }
+
+    public void setDivertedFlights(long divertedFlights) {
+        this.divertedFlights = divertedFlights;
+    }
+
+    public double getMeanDepDelay() {
+        return meanDepDelay;
+    }
+
+    public void setMeanDepDelay(double meanDepDelay) {
+        this.meanDepDelay = meanDepDelay;
+    }
+
+    public double getCancellationRate() {
+        return cancellationRate;
+    }
+
+    public void setCancellationRate(double cancellationRate) {
+        this.cancellationRate = cancellationRate;
+    }
+
+    public double getLateDepartureRate() {
+        return lateDepartureRate;
+    }
+
+    public void setLateDepartureRate(double lateDepartureRate) {
+        this.lateDepartureRate = lateDepartureRate;
+    }
+
+
+
+
+
 }

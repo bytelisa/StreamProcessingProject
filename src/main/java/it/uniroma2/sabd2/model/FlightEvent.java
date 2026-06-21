@@ -94,20 +94,20 @@ public class FlightEvent {
         this.destAirportId = destAirportId;
     }
 
-    public Boolean getDiverted() {
+    public Boolean getIsDiverted() {
         return isDiverted;
     }
 
-    public void setDiverted(Boolean diverted) {
-        isDiverted = diverted;
+    public void setIsDiverted(Boolean isDiverted) {
+        this.isDiverted = isDiverted;
     }
 
-    public Boolean getCancelled() {
+    public Boolean getIsCancelled() {
         return isCancelled;
     }
 
-    public void setCancelled(Boolean cancelled) {
-        isCancelled = cancelled;
+    public void setIsCancelled(Boolean isCancelled) {
+        this.isCancelled = isCancelled;
     }
 
     public Double getDepDelay() {
