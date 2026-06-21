@@ -15,6 +15,34 @@ public class Query1Result {
     private double cancellationRate;
     private double lateDepartureRate;
 
+    @Override
+    public String toString() {
+        return "Query1Result{" +
+                "carrier='" + carrier + '\'' +
+                ", windowStart='" + windowStart + '\'' +
+                ", windowEnd='" + windowEnd + '\'' +
+                ", totalFlights=" + totalFlights +
+                ", completedFlights=" + completedFlights +
+                ", cancelledFlights=" + cancelledFlights +
+                ", divertedFlights=" + divertedFlights +
+                ", meanDepDelay=" + String.format("%.2f", meanDepDelay) +
+                ", cancellationRate=" + String.format("%.4f", cancellationRate) +
+                ", lateDepartureRate=" + String.format("%.4f", lateDepartureRate) +
+                '}';
+    }
+
+    public String toCsv() {
+        return carrier + "," +
+                windowStart + "," +
+                windowEnd + "," +
+                totalFlights + "," +
+                completedFlights + "," +
+                cancelledFlights + "," +
+                divertedFlights + "," +
+                meanDepDelay + "," +
+                cancellationRate + "," +
+                lateDepartureRate;
+    }
 
     public String getCarrier() {
         return carrier;

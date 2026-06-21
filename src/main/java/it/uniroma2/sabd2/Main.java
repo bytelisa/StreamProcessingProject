@@ -18,9 +18,14 @@ public class Main {
         try {
             DataStream <FlightEvent> flightEvents = FlightEventSource.sourceEvents(env);
 
+            // todo calcolo dei tempi
             // Query 1
             DataStream <Query1Result> query1Results = Query1Job.execute(flightEvents);
             query1Results.print();
+
+            query1Results
+                    .map(Query1Result::toCsv)
+                    .print("Q1 CSV");
 
             // Query 2
             //DataStream <Query2Result> query2Results = Query2Job.execute(env, FlightEvents);

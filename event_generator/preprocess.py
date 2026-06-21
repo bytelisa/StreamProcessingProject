@@ -190,7 +190,7 @@ def load_events():
                 flight_events.append(flight_event)
                 print(json.dumps(flight_event))
 
-                if i == 5:
+                if i == 25:
                     break
 
     return flight_events

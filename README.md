@@ -4,6 +4,8 @@
 ### Directory Tree
 ### Notes
 ### Versions
+JDK 11
+Flink 1.19 (DataStream API)
 ### Prerequisites
 
 ## Useful commands
@@ -48,4 +50,14 @@ python event_generator/preprocess.py
 ```bash
 source .venv-wsl/bin/activate
 python event_generator/replay.py
+```
+
+## Other useful commands
+
+### Delete topic "flights"
+```bash
+docker compose exec broker /opt/kafka/bin/kafka-topics.sh \
+--bootstrap-server broker:29092 \
+--delete \
+--topic flights
 ```
