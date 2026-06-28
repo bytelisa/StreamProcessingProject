@@ -46,3 +46,24 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 2        
+
+  # influxDB
+  influxdb:
+    image: influxdb:2
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: user # test
+      DOCKER_INFLUXDB_INIT_PASSWORD: password # test
+      DOCKER_INFLUXDB_INIT_ORG: sabd
+      DOCKER_INFLUXDB_INIT_BUCKET: sabd2
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: sabd2-token
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+      - influxdb-config:/etc/influxdb2
+
+volumes:
+  influxdb-data:
+  influxdb-config:
